@@ -1,0 +1,25 @@
+{
+  "name": "faeterj_crud_usuario",
+  "version": "1.0.0",
+  "description": "trabalho segundo bimestre api get post de usuario",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fernandadelgado77-lab/faeterj_crud_usuario.git"
+  },
+  "keywords": [],
+  "author": "Fernanda",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/fernandadelgado77-lab/faeterj_crud_usuario/issues"
+  },
+  "homepage": "https://github.com/fernandadelgado77-lab/faeterj_crud_usuario#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "sqlite3": "^6.0.1"
+  }
+}
