@@ -1,5 +1,3 @@
-//Aqui ficam as regras de negócio. Exemplo: "retorna todos os usuários", validações, cálculos. Ele não sabe nada de HTTP.
-
 import usuarioRepository from "../repositories/usuario.repository.js";
 
 async function findAllUsuarioService() {
@@ -7,15 +5,51 @@ async function findAllUsuarioService() {
     return usuarios;
 }
 
-async function createUsuarioService(novoUsuario) {
-    const usuario = await usuarioRepository.createUsuarioRepository(novoUsuario);
+async function findUsuarioByIdService(id){
+    const usuario = await usuarioRepository.findUsuarioByIdRepository(id)
     if (!usuario) {
-        throw new Error('Erro ao criar usuário');
+        throw new Error("Usuario não encontrado!");
     }
     return usuario;
 }
 
+async function updateUsuarioService(id, usuarioAtualizado){
+    const usuario = await usuarioRepository.findUsuarioByIdRepository(id)
+    if (!usuario) {
+        throw new Error("Usuario não encontrado!");
+    }
+    const usuarioRetorno = await usuarioRepository.updateUsuarioRepository(id, usuarioAtualizado)
+    if (!usuarioRetorno) {
+        throw new Error("Erro ao atualizar o usuario!");
+    } 
+    return usuarioRetorno;
+}
+
+async function createUsuarioService(novoUsuario) {
+    const usuario = await usuarioRepository.createUsuarioRepository(novoUsuario);
+    if (!usuario) {
+        throw new Error('Erro na criação do usuário');
+    }
+    return usuario;
+}
+
+async function deleteUsuarioService(id){
+    const usuario = await usuarioRepository.findUsuarioByIdRepository(id)
+    if (!usuario) {
+        throw new Error("Usuario não encontrado!");
+    }
+    const mensagemRetorno = await usuarioRepository.deleteUsuarioRepository(id)
+    if (!mensagemRetorno) {
+        throw new Error("Erro ao deletar o usuario!");
+    } 
+    return mensagemRetorno;
+}
+
+
 export default {
     findAllUsuarioService,
-    createUsuarioService
+    createUsuarioService,
+    findUsuarioByIdService,
+    updateUsuarioService,
+    deleteUsuarioService
 };
